@@ -58,6 +58,13 @@ jobs:
     needs: dev
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: tonynator
+          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-body: "This is a test"
+          minimum-approvals: 1
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
