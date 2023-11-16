@@ -38,7 +38,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/development'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -57,11 +56,10 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     needs: dev
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: trstringer/manual-approval@v1
-        timeout-minutes: 3
+        timeout-minutes: 2
         with:
           secret: ${{ github.TOKEN }}
           approvers: tonynator
